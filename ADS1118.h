@@ -4,7 +4,6 @@
 #include "Arduino.h"
 #include <SPI.h>
 #include <stdint.h>
-#include "freertos/include/freertos/task.h"
 /**
 * Union representing the "config register" in 3 ways: 
 * bits, word (16 bits) and nibbles (4 bits)
