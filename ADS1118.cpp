@@ -200,7 +200,7 @@ uint16_t ADS1118::getADCValue(uint8_t inputs) {
 	pSpi->endTransaction();
 #endif         
 	for(int i=0;i<CONV_TIME[configRegister.bits.rate];i++) //Lets wait the conversion time
-            delayMicroseconds(1000);
+            vTaskDelay(pdMS_TO_TICKS(1));
             count++;
 	}while (count<=1);  //We make two readings because the second reading is the ADC conversion.	
         DEBUG_GETADCVALUE(configRegister);  //Debug this method: print the config register in the Serial port
@@ -282,7 +282,7 @@ double ADS1118::getTemperature() {
 	pSpi->endTransaction();
 #endif
 	for(int i=0;i<CONV_TIME[configRegister.bits.rate];i++) //Lets wait the conversion time
-            delayMicroseconds(1000);
+            vTaskDelay(pdMS_TO_TICKS(1));
         count++;
     }while (count<=1);  //We make two readings because the second reading is the temperature.
     DEBUG_GETTEMPERATURE(configRegister);  //Debug this method: print the config register in the Serial port
